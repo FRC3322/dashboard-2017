@@ -18,5 +18,9 @@
   "homepage": "http://frcdashboard.github.io",
   "devDependencies": {
     "electron": "^1.2.0"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }

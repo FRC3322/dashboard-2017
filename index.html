@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>FRC Dashboard</title>
+    <title>Dashboard - 3322 Eagle Imperium</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <!-- Clock that shows up in top left -->
-    <div id="timer">2:15</div>
+    <div id="timer">3322</div>
     <header>
         <!-- Tells whether robot is connected to dashboard. -->
         <div id="robot-state">Unknown state</div>
@@ -42,7 +42,7 @@
             <circle cx="100" cy="410" r="25" />
             <circle cx="260" cy="410" r="25" />
             <rect x="60" y="380" width="250" height="30" />
-            <text x="185" y="405" id="team" text-anchor="middle">####</text>
+            <text x="185" y="405" id="team" text-anchor="middle">3322</text>
         </svg>
     </article>
     <!-- The sidebar of the dashboard. Designed for smaller control elements like selection boxes and small buttons. -->
@@ -59,10 +59,6 @@
                 <option>No auto modes found</option>
                 <!-- This gets populated by JS -->
             </select>
-        </div>
-        <div>
-            <p>Adjust arm height</p>
-            <input id="arm-position" type="range" min="0" max="1200" value="770">
         </div>
     </aside>
     <script src="/networktables/networktables.js"></script>
