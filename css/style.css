@@ -12,9 +12,9 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: white;
+    color: black;
     overflow: hidden;
-    background: #222;
+    background: #eee;
 }
 button,
 input[type="text"],
@@ -52,7 +52,7 @@ body > * {
     padding: 10px;
     position: fixed;
     overflow: scroll;
-    background: #222;
+    background: #eee;
 }
 #timer {
     font-family: monospace;
@@ -81,7 +81,7 @@ header {
     overflow: hidden;
     background-color: #333;
     /* You'll need to mess with this a bit to get your camera to work. Replace the url with a live-updating image feed from your camera. Using other camera streaming systems will require some tweaking. */
-    background: url('http://10.33.22.17:8080/?action=stream');
+    background: url('/images/offline.gif');
     background-repeat: no-repeat;
     background-size: contain;
 	background-position: center bottom;
@@ -98,7 +98,7 @@ header {
 #tuning p {
     margin-bottom: 10px;
 }
-article {
+#diagram {
     top: 0;
     left: 50vw;
     height: 100vh;
