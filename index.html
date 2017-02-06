@@ -3,27 +3,20 @@
 <head>
     <meta charset="utf-8">
     <title>Dashboard - 3322 Eagle Imperium</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="logo"></div>
-    <header>
-        <div id="robot-state">Unknown state</div>
-        <button id="tuning-button">Tuning</button>
-    </header>
-    <div id="camera"></div>
-    <div id="tuning" style="display: none;">
-        <input type="text" placeholder="Property" id="name">
-        <input type="text" placeholder="Value" id="value">
-        <button id="set">Set</button>
-        <button id="get">Get</button>
+    <div id="top-left">
+        <img id="logo" src="images/logo.svg">
+        <div id="status">
+            <h2>Status</h2>
+            <h1>Disconnected</h1>
+        </div>
     </div>
-    <div class="diagram">
-        <img src="images/p1.svg">
-    </article>
+    <div id="camera"></div>
 
     <script src="/networktables/networktables.js"></script>
     <script src="ui.js"></script>
 </body>
-
 </html>
