@@ -1,9 +1,10 @@
 'use strict';
 
+// Imports
 const electron = require('electron');
-// Module to control application life.
+import fontawesome from 'font-awesome';
+
 const app = electron.app;
-// Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
 // Keep a global reference of the window object, if you don't, the window will

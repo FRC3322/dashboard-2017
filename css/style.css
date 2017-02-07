@@ -46,42 +46,52 @@ input[type="checkbox"] {
 hr {
     height: 0;
     border: 2px solid #ddd;
-    margin: 0 60px;
+    margin: 10px 60px;
 }
 h1 {
     font-size: 1.4em;
     font-weight: 900;
 }
+#camera h1, table h1 {
+    margin: 0.5em 0.2em;
+    text-transform: uppercase;
+}
 
 /* Major interface components */
-#top-left {
-    margin: 20px;
+#banner {
+    margin: 35px;
     vertical-align: middle;
+    text-transform: lowercase;
+}
+#banner span {
+    display: inline-block;
+    float: left;
 }
 #logo {
-    width: 240px;
+    width: 7.5em;
+    margin-right: 20px;
     vertical-align: middle;
+    display: inline-block;
+    float: left;
 }
 #status {
-    display: inline-block;
-    vertical-align: middle;
+    margin-top: 20px;
     color: #222;
 }
+#status h1 {
+    font-size: 2.2em;
+    font-weight: 900;
+    line-height: 0.9;
+}
 #status h2 {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 900;
     text-transform: uppercase;
 }
-#status h1 {
-    font-size: 2.8em;
-    font-weight: 900;
-    line-height: 0.9;
-    text-transform: lowercase;
-}
 #status-code {
     position: fixed;
-    top: 60px;
-    right: 70px;
+    top: 30px;
+    right: 60px;
     text-align: right;
     color: #2E6DB0;
 }
@@ -93,25 +103,57 @@ h1 {
     font-weight: 900;
 }
 #status-code h2 {
-    font-size: 0.9em;
+    font-size: 0.85em;
     line-height: 0;
 }
 #camera {
     position: fixed;
-    bottom: 50px;
-    left: 70px;
+    bottom: 40px;
+    left: 60px;
     font-size: 1em;
-    text-transform: uppercase;
 }
-#camera h1 {
-    margin: 0.5em 0.2em;
-}
-#video {
-    width: 60vh;
-    height: 40vh;
-    background-color: #DFDFDF;
-    /*background: url('http://10.33.22.17:8080/?action=stream'), #DFDFDF; uncomment when camera is set up */
+#video-stream {
+    width: 30em;
+    height: 20em;
+    background-color: #dfdfdf;
+    /*background: url('http://10.33.22.17:8080/?action=stream'), #dfdfdf; uncomment when camera is set up */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center bottom;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
+}
+#video-stream.offline::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    content: "Offline";
+    font-size: 2em;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+#table {
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    text-transform: uppercase;
+}
+table {
+    display: block;
+    border-collapse: collapse;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
+    max-height: 350px;
+    overflow-y: scroll;
+}
+th, td {
+    text-align: left;
+    padding: 1.2em 3em;
+}
+tr {
+    background: #ebebeb;
+}
+tr:nth-child(even) {background-color: #dfdfdf}
+th {
+    background-color: #2E6DB0;
+    color: white;
 }
