@@ -43,105 +43,75 @@ input[type="checkbox"] {
     -webkit-filter: saturate(0);
     filter: saturate(0);
 }
+hr {
+    height: 0;
+    border: 2px solid #ddd;
+    margin: 0 60px;
+}
+h1 {
+    font-size: 1.4em;
+    font-weight: 900;
+}
 
 /* Major interface components */
 #top-left {
-    position: fixed;
-    top: 20px;
-    left: 20px;
+    margin: 20px;
     vertical-align: middle;
 }
 #logo {
-    width: 210px;
+    width: 240px;
     vertical-align: middle;
-
 }
 #status {
-    font-weight: bolder;
     display: inline-block;
     vertical-align: middle;
+    color: #222;
 }
 #status h2 {
     font-size: 1.2em;
+    font-weight: 900;
     text-transform: uppercase;
 }
 #status h1 {
     font-size: 2.8em;
+    font-weight: 900;
     line-height: 0.9;
     text-transform: lowercase;
+}
+#status-code {
+    position: fixed;
+    top: 60px;
+    right: 70px;
+    text-align: right;
+    color: #2E6DB0;
+}
+#status-code.bad {
+    color: #960000;
+}
+#status-code h1 {
+    font-size: 3.5em;
+    font-weight: 900;
+}
+#status-code h2 {
+    font-size: 0.9em;
+    line-height: 0;
 }
 #camera {
     position: fixed;
     bottom: 50px;
     left: 70px;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+#camera h1 {
+    margin: 0.5em 0.2em;
+}
+#video {
     width: 60vh;
     height: 40vh;
-    overflow: hidden;
     background-color: #DFDFDF;
     /*background: url('http://10.33.22.17:8080/?action=stream'), #DFDFDF; uncomment when camera is set up */
     background-repeat: no-repeat;
     background-size: contain;
-	background-position: center bottom;
-}
-#tuning {
-    width: 50vw;
-    height: 80vh;
-    bottom: 0;
-    left: 0;
-}
-#tuning div {
-    margin: 20px 0;
-}
-#tuning p {
-    margin-bottom: 10px;
-}
-#diagram {
-    top: 0;
-    left: 50vw;
-    height: 100vh;
-    width: 35vw;
-}
-text {
-    font-size: 16px;
-    letter-spacing: 2px;
-    stroke: none;
-    fill: white;
-}
-#gyro {
-    width: 175px;
-    height: 175px;
-    margin-left: 30px;
-    margin-top: 15px;
-}
-#gyro-arm {
-    -webkit-transform-origin: bottom;
-    -ms-transform-origin: bottom;
-    transform-origin: bottom;
-}
-#gyro-number {
-    font-size: 25px;
-    text-anchor: middle;
-}
-#robot-diagram {
-    position: absolute;
-    bottom: 1px;
-    right: 1vw;
-}
-#robot-arm {
-    -webkit-transform-origin: right;
-    -ms-transform-origin: right;
-    transform-origin: right;
-}
-#team {
-    font-size: 28px;
-    letter-spacing: -1px;
-}
-aside {
-    right: 0;
-    top: 0;
-    width: 15vw;
-    height: 100vh;
-}
-aside > * {
-    margin-bottom: 20px;
+    background-position: center bottom;
 }

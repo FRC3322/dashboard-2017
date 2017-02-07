@@ -11,12 +11,20 @@
         <img id="logo" src="images/logo.svg">
         <div id="status">
             <h2>Status</h2>
-            <h1>Disconnected</h1>
+            <h1 id="robot-state">Unknown</h1>
         </div>
     </div>
-    <div id="camera"></div>
+    <hr>
+    <div id="status-code">
+        <h1>NOML</h1>
+        <h2>(hopefully) no issues</h2>
+    </div>
 
-    <!-- wat? no networktables folder -->
+    <div id="camera">
+        <h1>Camera feed</h1>
+        <div id="video"></div>
+    </div>
+
     <script src="/networktables/networktables.js"></script>
     <script src="ui.js"></script>
 </body>

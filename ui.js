@@ -2,6 +2,7 @@
 var ui = {
 	timer: document.getElementById('timer'),
 	robotState: document.getElementById('robot-state'),
+	statusCode: document.getElementById('code'),
 	gyro: {
 		container: document.getElementById('gyro'),
 		val: 0,
@@ -38,7 +39,7 @@ NetworkTables.addGlobalListener(onValueChanged, true);
 
 
 function onRobotConnection(connected) {
-	var state = connected ? 'Robot connected!' : 'Robot disconnected.';
+	var state = connected ? 'Connected' : 'Disconnected';
 	console.log(state);
 	ui.robotState.innerHTML = state;
 }
