@@ -25,6 +25,9 @@ function createWindow() {
 
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
+		width: 1100,
+    height: 600,
+    icon: "images/logo.ico",
     resizable: false,
 		show: false
 	});
