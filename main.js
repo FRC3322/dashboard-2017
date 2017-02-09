@@ -2,7 +2,6 @@
 
 // Imports
 const electron = require('electron');
-import fontawesome from 'font-awesome';
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
@@ -26,11 +25,13 @@ function createWindow() {
 
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		width: 1100,
-    height: 600,
-    icon: "images/logo.ico",
-    resizable: false,
-		show: false
+        x: 0,
+        y: 0,
+        width: 1366,
+        height: 530,
+        icon: "images/logo.ico",
+        resizable: false,
+        show: false
 	});
 
 	// Move window to top (left) of screen.

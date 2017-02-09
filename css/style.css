@@ -1,3 +1,5 @@
+
+/* Disgusting, pls fix */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -58,12 +60,12 @@ h1 {
 }
 
 /* Major interface components */
-#banner {
+#top {
     margin: 35px;
     vertical-align: middle;
     text-transform: lowercase;
 }
-#banner span {
+#top span {
     display: inline-block;
     float: left;
 }
@@ -101,6 +103,7 @@ h1 {
 #status-code h1 {
     font-size: 3.5em;
     font-weight: 900;
+    text-transform: uppercase;
 }
 #status-code h2 {
     font-size: 0.85em;
@@ -147,7 +150,7 @@ table {
 }
 th, td {
     text-align: left;
-    padding: 1.2em 3em;
+    padding: 1em 2.8em;
 }
 tr {
     background: #ebebeb;
@@ -156,4 +159,31 @@ tr:nth-child(even) {background-color: #dfdfdf}
 th {
     background-color: #2E6DB0;
     color: white;
+}
+
+/* Smaller displays */
+@media (max-width: 1000px), (max-height: 600px) {
+    #top {
+        font-size: 80%;
+    }
+    #camera, #table {
+        font-size: 80%;
+    }
+
+    table {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 800px), (max-height: 500px) {
+    #top {
+        font-size: 70%;
+    }
+    #camera, #table {
+        font-size: 60%;
+    }
+
+    table {
+        max-height: 200px;
+    }
 }
