@@ -16,7 +16,7 @@ function onRobotConnection(connected) {
 }
 
 function onValueChanged(key, value, isNew) {
-	key.replace("", "");
+	key.replace("/SmartDashboard/", "");
 
 	// Sometimes, NetworkTables will pass booleans as strings. This corrects for that.
 	if (value == 'true') {
@@ -24,6 +24,9 @@ function onValueChanged(key, value, isNew) {
 	} else if (value == 'false') {
 		value = false;
 	}
+
+	// Update table to match
+	var keys = [];
 
 	// This switch statement chooses which UI element to update when a NetworkTables variable changes.
 	switch (key) {
@@ -38,6 +41,7 @@ function onValueChanged(key, value, isNew) {
 			break;
 			// The following case is an example, for a robot with an arm at the front.
 			// Info on the actual robot that this works with can be seen at thebluealliance.com/team/1418/2016.
+
 		case 'arm/encoder':
 			// 0 is all the way back, 1200 is 45 degrees forward. We don't want it going past that.
 			if (value > 1140) {
@@ -52,6 +56,7 @@ function onValueChanged(key, value, isNew) {
 			ui.robotDiagram.arm.style.transform = 'rotate(' + armAngle + 'deg)';
 			break;
 			// This button is just an example of triggering an event on the robot by clicking a button.
+
 		case 'example_variable':
 			if (value) { // If function is active:
 				// Add active class to button.
@@ -63,6 +68,7 @@ function onValueChanged(key, value, isNew) {
 				ui.example.readout.innerHTML = 'Value is false';
 			}
 			break;
+
 		case 'time_running':
 			// When this NetworkTables variable is true, the timer will start.
 			// You shouldn't need to touch this code, but it's documented anyway in case you do.
