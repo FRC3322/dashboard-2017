@@ -1,10 +1,11 @@
 {
-  "name": "FRCDashboard",
+  "name": "dashboard-2017",
   "version": "v2.0.0",
-  "description": "Dashboard for extra robot controls in FRC. Experimental Electron environment.",
-  "main": "main.js",
+  "description": "Dashboard for the FRC 2017 robot.",
+  "main": "js/main.js",
   "scripts": {
-    "start": "electron main.js"
+    "test": "py -3 -m pynetworktables2js",
+    "start": "electron js/main.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,8 @@
   "homepage": "http://frcdashboard.github.io",
   "devDependencies": {
     "electron": "^1.2.0",
-    "eslint": "^3.15.0"
+    "eslint": "^3.15.0",
+    "react": "^15.4.2"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",

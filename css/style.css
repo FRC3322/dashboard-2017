@@ -70,6 +70,10 @@ h1 {
 #top span {
     display: inline-block;
     float: left;
+    margin: 0.4em 0.8em;
+}
+#top span i {
+    margin-right: 0.4em;
 }
 #logo {
     width: 7.5em;
@@ -99,7 +103,7 @@ h1 {
     text-align: right;
     color: #2E6DB0;
 }
-#status-code.bad {
+#status-code.err {
     color: #960000;
 }
 #status-code h1 {

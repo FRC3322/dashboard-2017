@@ -2,6 +2,7 @@
 
 // Imports
 const electron = require('electron');
+require('font-awesome');
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
