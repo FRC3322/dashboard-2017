@@ -2,7 +2,6 @@
 
 // Imports
 const electron = require('electron');
-require("babel-core").transform("code", options);
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
