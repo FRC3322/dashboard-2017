@@ -27,12 +27,7 @@ var ui = {
         right3: document.getElementById('right-three')
 	},
 	*/
-	robotDiagram: {
-		arm: document.getElementById('robot-arm')
-	},
-	example: {
-		button: document.getElementById('example-button'),
-		readout: document.getElementById('example-readout')
+	readout: document.getElementById('example-readout')
 	},
 	tuning: {
 		list: document.getElementById('tuning'),
@@ -55,8 +50,7 @@ NetworkTables.addGlobalListener(onValueChanged, true);
 
 
 function onRobotConnection(connected) {
-	var state = connected ? 'Connected' : 'Dis
-	connected';
+	var state = connected ? 'Connected' : 'Disconnected';
 	console.log(state);
 	ui.robotState.innerHTML = state;
 }
@@ -120,11 +114,11 @@ function onValueChanged(key, value, isNew) {
             if (value)
               ui.motorGear.highG = value;
             break;
-        case '/SmartDashboard/Gear'
+        case '/SmartDashboard/Gear':
             if (value)
                 ui.motorGear.gearG = value;
             break;
-        case '/SmartDashboard/Speed'
+        case '/SmartDashboard/Speed':
             if (value)
                 ui.robotSpeed = value;
             break;
@@ -249,9 +243,7 @@ function onValueChanged(key, value, isNew) {
 }
 
 // The rest of the doc is listeners for UI elements being clicked on
-ui.example.button.onclick = function() {
-	// Set NetworkTables values to the opposite of whether button has active class.
-	NetworkTables.setValue('/SmartDashboard/example_variable', this.className != 'active');
+ui.close.onclick = function() {
 };
 
 // Reset gyro value to 0 on click

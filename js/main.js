@@ -29,8 +29,10 @@ function createWindow() {
         y: 0,
         width: 1366,
         height: 530,
+        title: "Dashboard - Eagle Imperium",
         icon: "images/logo.ico",
         resizable: false,
+        frame: false,
         show: false
 	});
 
