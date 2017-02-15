@@ -3,15 +3,7 @@ var ui = {
 	timer: document.getElementById('timer'),
 	robotState: document.getElementById('robot-state'),
 	statusCode: document.getElementById('code'),
-	robotSpeed: document.getElementById('motor-speed')
-	gyro: {
-		container: document.getElementById('gyro'),
-		val: 0,
-		offset: 0,
-		visualVal: 0,
-		arm: document.getElementById('gyro-arm'),
-		number: document.getElementById('gyro-number')
-	},
+	robotSpeed: document.getElementById('motor-speed'),
 	motorGear: {
 	    gearG: document.getElementById('gear-shift'),
 	    lowG:  document.getElementById('gear-lowG'),
@@ -27,18 +19,6 @@ var ui = {
         right3: document.getElementById('right-three')
 	},
 	*/
-	readout: document.getElementById('example-readout')
-	},
-	tuning: {
-		list: document.getElementById('tuning'),
-		button: document.getElementById('tuning-button'),
-		name: document.getElementById('name'),
-		value: document.getElementById('value'),
-		set: document.getElementById('set'),
-		get: document.getElementById('get')
-	},
-	autoSelect: document.getElementById('auto-select'),
-    armPosition: document.getElementById('arm-position')
 };
 
 // Sets function to be called on NetworkTables connect. Commented out because it's usually not necessary.
