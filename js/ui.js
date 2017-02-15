@@ -263,3 +263,7 @@ ui.autoSelect.onchange = function() {
 ui.armPosition.oninput = function() {
 	NetworkTables.setValue('/SmartDashboard/arm/encoder', parseInt(this.value));
 };
+
+$('#close').click(function() {
+
+});
