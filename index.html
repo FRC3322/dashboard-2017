@@ -26,51 +26,28 @@
     <hr>
     <span style="clear: both;"></span>
 
+    <table id="nt"></table>
+
     <div id="camera">
         <h1>Camera feed</h1>
         <div id="video-stream" class="offline"></div>
     </div>
     <div id="table">
         <h1>Table</h1>
-        <table>
-            <tr>
-                <th>Key</th>
-                <th>Value</th>
-            </tr>
-            <tr>
-                <td>LMOTOR</td>
-                <td>1234 RPM</td>
-            </tr>
-            <tr>
-                <td>LMOTOR</td>
-                <td>1234 RPM</td>
-            </tr>
-            <tr>
-                <td>LMOTOR</td>
-                <td>1234 RPM</td>
-            </tr>
-            <tr>
-                <td>LMOTOR</td>
-                <td>1234 RPM</td>
-            </tr>
-            <tr>
-                <td>LMOTOR</td>
-                <td>1234 RPM</td>
-            </tr>
-            <tr>
-                <td>LMOTOR</td>
-                <td>1234 RPM</td>
-            </tr>
-            <tr>
-                <td>LMOTOR</td>
-                <td>1234 RPM</td>
-            </tr>
+        <table id="network-table">
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
         </table>
     </div>
 
     <script src="/networktables/networktables.js"></script>
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/datatables.net/js/jquery.dataTables.js"></script>
     <script src="/node_modules/chart.js/dist/Chart.bundle.min.js"></script>
-    <script src="/js/ui.js"></script>
+    <script src="js/ui.js"></script>
 </body>
 </html>
