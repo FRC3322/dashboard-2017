@@ -10,11 +10,7 @@ let mainWindow;
 let server;
 
 function createWindow() {
-    if (process.platform === 'win32') {
-        server = require('child_process').spawn('py', ['-3', '-m', 'pynetworktables2js']);
-    } else {
-        server = require('child_process').spawn('python3', ['-m', 'pynetworktables2js']);
-    }
+    server = require('child_process').spawn('py', ['-3', '-m', 'pynetworktables2js', '--dashboard', '--port 3322']);
 
 	mainWindow = new BrowserWindow({
         x: 0,
@@ -26,10 +22,10 @@ function createWindow() {
 	});
 
 	mainWindow.setPosition(0, 0);
-	mainWindow.loadURL('http://localhost:8888');
+	mainWindow.loadURL('http://localhost:3322');
 
 	mainWindow.once('ready-to-show', function() {
-		mainWindow.loadURL('http://localhost:8888');
+		mainWindow.loadURL('http://localhost:3322');
 		mainWindow.once('ready-to-show', function() {
 			mainWindow.show();
 		});
