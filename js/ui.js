@@ -7,6 +7,11 @@ function onRobotConnection(connected) {
 	var state = connected ? 'Connected' : 'Disconnected';
 	console.log(state);
 	$('#robot-state').text(state);
+	if (connected) {
+		$('#robot-state').addClass("connected");
+	} else {
+		$('#robot-state').removeClass("connected");
+	}
 }
 
 function onValueChanged(key, value, isNew) {

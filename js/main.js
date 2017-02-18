@@ -10,7 +10,7 @@ let mainWindow;
 let server;
 
 function createWindow() {
-    server = require('child_process').spawn('py', ['-3', '-m', 'pynetworktables2js', '--dashboard', '--port 3322']);
+    server = require('child_process').spawn('py', ['-3', '-m', 'pynetworktables2js', '--robot 10.33.22.2', '--port 3322']);
 
 	mainWindow = new BrowserWindow({
         x: 0,
