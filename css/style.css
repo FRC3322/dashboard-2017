@@ -70,10 +70,10 @@ h1 {
 #top span {
     display: inline-block;
     float: left;
-    margin: .5em .8em;
+    margin: .5em;
 }
-#top span h1 {
-    margin-left: 10px;
+#top span i {
+    margin-right: .5em;
 }
 #logo {
     width: 7.5em;
@@ -105,7 +105,7 @@ h1 {
     height: 0.5em;
 }
 #robot-state.connected::after {
-    background: #00B16A;
+    background: #87D37C;
 }
 #status-code {
     position: fixed;
@@ -126,23 +126,21 @@ h1 {
     font-size: 0.85em;
     line-height: 0;
 }
+body > #categories > div {
+
+}
 #camera {
     position: fixed;
     bottom: 40px;
     left: 60px;
     font-size: 1em;
 }
-#video-stream {
+#camera img,
+#camera object {
     width: 30em;
-    height: 20em;
-    background-color: #dfdfdf;
-    background: url('http://10.33.22.32:8080/?action=stream'), #dfdfdf;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center bottom;
-    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
+    background-color: #ccc;
 }
-#video-stream.offline::after {
+#camera img.offline::after {
     position: absolute;
     top: 50%;
     left: 50%;

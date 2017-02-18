@@ -1,7 +1,7 @@
 NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 NetworkTables.addGlobalListener(onValueChanged, true);
 
-var nt = [];
+var nt = {};
 
 function onRobotConnection(connected) {
 	var state = connected ? 'Connected' : 'Disconnected';
@@ -21,6 +21,9 @@ function onValueChanged(key, value, isNew) {
 	} else if (value == 'false') {
 		value = false;
 	}
+
+	// Log value changes
+	console.log(key + " = " + value);
 
 	switch (key) {
 		case '/SmartDashboard/time_running':
@@ -53,14 +56,8 @@ function onValueChanged(key, value, isNew) {
 			break;
 	}
 
-	console.log("nt change");
-
-	// Create a dynamic table
-	if (isNew) {
-		nt[nt.length()][0] = key;
-		nt[nt.length()][1] = value;
-		console.log("new entry: " + key + ", " + value);
-	}
+	// Update a table that reflects
+	nt[key] = value;
 }
 
 $('#network-table').DataTable({
