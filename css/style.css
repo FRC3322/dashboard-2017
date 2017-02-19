@@ -13,35 +13,28 @@ body {
 	user-select: none;
 	color: black;
 	overflow: hidden;
-	background: #F2F2F2;
+	background: #f7f7f7;
 	/* TODO Implement actual font sizing */
 	font-size: 80%;
+	color: #222;
 }
 button,
 input[type="text"],
 input[type="number"],
 .select-container,
 select {
-	color: white;
-	background: #444;
 	border: none;
+	background: #ddd;
 	font-size: 14px;
-	padding: 6px 8px;
-	cursor: pointer;
+	padding: .4em .8em;
 	outline: 0;
 }
 .select-container {
 	padding: 0;
 	display: inline-block;
 }
-select {
-	border: none;
-	background: none;
-	color: white;
-}
-input[type="text"],
-input[type="number"] {
-	cursor: text;
+select h1 {
+	font-size: .5em;
 }
 input[type="checkbox"] {
 	-webkit-filter: saturate(0);
@@ -53,19 +46,44 @@ hr {
 	margin: 10px 60px;
 }
 h1 {
-	font-size: 1.4em;
+	font-size: 1.2em;
 	font-weight: 900;
 }
-#categories h1 {
-	margin: 0.5em 0.2em;
-	text-transform: uppercase;
+.light {
+	text-transform: capitalize;
+}
+.light::after {
+	content: "";
+	display: inline-block;
+	margin-left: 0.5em;
+	background: #CCC;
+	width: 1.625em;
+	height: .75em;
+}
+.light.grn::after {
+	background: #87D37C;
+}
+.light.red::after {
+	background: #EC644B;
+}
+.button {
+	font-size: .85em;
+	padding: .75em 1.5em;
+	background: #2E6DB0;
+	color: white;
+	text-decoration: none;
+}
+.button:hover {
+	background: #29609a;
 }
 
 /* Major interface components */
 #top {
-	margin: 35px;
+	margin: 30px 40px;
 	vertical-align: middle;
 	text-transform: lowercase;
+	font-size: 80%;
+	overflow: hidden;
 }
 #top span {
 	display: inline-block;
@@ -79,12 +97,7 @@ h1 {
 	width: 7.5em;
 	margin-right: 20px;
 	vertical-align: middle;
-	display: inline-block;
 	float: left;
-}
-#status {
-	margin-top: 20px;
-	color: #222;
 }
 #status h1 {
 	font-size: 2.2em;
@@ -110,7 +123,7 @@ h1 {
 #status-code {
 	position: fixed;
 	top: 30px;
-	right: 60px;
+	right: 40px;
 	text-align: right;
 	color: #2E6DB0;
 }
@@ -126,19 +139,40 @@ h1 {
 	font-size: 0.85em;
 	line-height: 0;
 }
-body > #categories > div {
-
+main {
+	clear: both;
+	margin: 0 40px;
 }
-#camera {
-	position: fixed;
-	bottom: 40px;
-	left: 60px;
-	font-size: 1em;
+main > div {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 10px;
+}
+main h1 {
+	margin: 0.5em 0.2em;
+	text-transform: uppercase;
+}
+
+/* Specific styling */
+#properties {
+	text-align: center;
+}
+#properties h1 {
+	text-align: left;
+}
+#properties div {
+	vertical-align: top;
+	display: inline-block;
+	min-width: 125px;
 }
 #camera img,
-#camera object {
+table {
+	box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
+}
+#camera img {
+	display: block;
 	width: 30em;
-	background-color: #ccc;
+	margin-bottom: 10px;
 }
 #camera img.offline::after {
 	position: absolute;
@@ -152,14 +186,13 @@ body > #categories > div {
 }
 #table {
 	position: fixed;
-	bottom: 40px;
-	right: 60px;
+	bottom: 30px;
+	right: 40px;
 	text-transform: uppercase;
 }
 table {
 	display: block;
 	border-collapse: collapse;
-	box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
 	max-height: 350px;
 	overflow-y: scroll;
 }

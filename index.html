@@ -14,22 +14,40 @@
 		<div id="status">
 			<h2>Status</h2>
 			<h1 id="robot-state">Unknown</h1>
+
+			<span><i class="fa fa-cog"></i>Settings</span>
+			<span><i class="fa fa-info"></i>About</span>
 		</div>
-		<span><i class="fa fa-cog"></i>Settings</span>
-		<span><i class="fa fa-info"></i>About</span>
 
 		<div id="status-code">
 			<h1>NOML</h1>
 			<h2>(hopefully) no issues</h2>
 		</div>
 	</div>
-	<hr>
-	<span style="clear: both;"></span>
 
-	<div id="categories">
+	<main>
 		<div id="camera">
-			<h1>Camera feed</h1>
-			<img id="video-stream" src="http://10.33.22.32:8080/?action=stream">
+			<h1>Camera feeds</h1>
+			<img src="http://10.33.22.32:8080/?action=stream" alt="Camera 1">
+			<img src="http://10.33.22.32:8080/?action=stream" alt="Camera 2">
+		</div>
+
+		<div>
+			<h1>Speed</h1>
+			<canvas id="speed"></canvas>
+		</div>
+
+		<div id="properties">
+			<h1>Properties</h1>
+			<div>
+				<h2>General</h2>
+				<p id="holder" class="light">Holder</p>
+				<p id="gearing" class="light">Gearing</p>
+			</div>
+			<div>
+				<h2>Auton</h2>
+				<p id="auton-ready" class="light">Auton ready</p>
+			</div>
 		</div>
 
 		<div id="table">
@@ -43,7 +61,7 @@
 				</thead>
 			</table>
 		</div>
-	</div>
+	</main>
 
 	<script src="/networktables/networktables.js"></script>
 	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
