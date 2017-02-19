@@ -1,8 +1,10 @@
 NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 NetworkTables.addGlobalListener(onValueChanged, true);
 
-var time = [];
-var speed = [];
+var speed = [
+	[1, 2, 3, 4],
+	[3, 7, 6, 1]
+];
 
 function onRobotConnection(connected) {
 	var state = connected ? 'Connected' : 'Disconnected';
@@ -55,21 +57,35 @@ function onValueChanged(key, value, isNew) {
 			}
 			NetworkTables.setValue(key, false);
 			break;
-		case '/SmartDashboard/LeftEnc':
+		case '/SmartDashboard/robot_speed':
 			speed.push(value);
 			break;
-		case '/SmartDashboard/Holder':
+		case '/SmartDashboard/holder':
 			if (value) {
-				$('#holder').addClass('on');
+				$('#holder').addClass('grn');
 			} else {
-				$('#holder').removeClass('on');
+				$('#holder').removeClass('grn');
 			}
 			break;
-		case '/SmartDashboard/StartPos':
-			if (value == 0) {
-				$('#auton-ready').addClass('on');
+		case '/SmartDashboard/start_pos':
+			if (value != 0) {
+				$('#auton-ready').switchClass('red', 'grn');
 			} else {
-				$('#auton-ready').removeClass('on');
+				$('#auton-ready').switchClass('grn', 'red');
+			}
+			break;
+		case '/SmartDashboard/shift_state':
+			if (value == 0) {
+				$('#auton-ready').addClass('grn');
+			} else {
+				$('#auton-ready').removeClass('grn');
+			}
+			break;
+		case '/SmartDashboard/shift_state':
+			if (value == 0) {
+				$('#auton-ready').addClass('grn');
+			} else {
+				$('#auton-ready').removeClass('grn');
 			}
 			break;
 	}
@@ -78,10 +94,10 @@ function onValueChanged(key, value, isNew) {
 var speedChart = new Chart($("#speed"), {
 	type: 'line',
 	data: {
-		labels: time,
+		labels: speed[0],
 		datasets: [{
 			label: 'Speed',
-			data: speed,
+			data: speed[1],
 			backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
