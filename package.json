@@ -1,9 +1,10 @@
 {
   "name": "dashboard-2017",
+  "version": "1.0.0",
   "main": "js/main.js",
   "scripts": {
     "start": "electron js/main.js",
-	"test": "cmd /k py -3 -m pynetworktables2js --robot 10.33.22.2 --port 3322"
+    "test": "cmd /k py -3 -m pynetworktables2js --robot 10.33.22.2 --port 3322"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
@@ -19,5 +20,16 @@
     "normalize.css": "^5.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
-  }
+  },
+  "description": "A fully customizable dashboard for FRC which is based on web languages (JavaScript/CSS/HTML). It's completely legal for competition, and can be used to give your whole drive team significantly richer control of your robot.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FRC3322/dashboard-2017.git"
+  },
+  "author": "TheWhiteBreadMan, Andriyasdf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FRC3322/dashboard-2017/issues"
+  },
+  "homepage": "https://github.com/FRC3322/dashboard-2017#readme"
 }
