@@ -10,15 +10,15 @@ let mainWindow;
 let server;
 
 function createWindow() {
-    server = require('child_process').spawn('py', ['-3', '-m', 'pynetworktables2js', '--robot 10.33.22.2', '--port 3322']);
+	server = require('child_process').spawn('py', ['-3', '-m', 'pynetworktables2js', '--robot 10.33.22.2', '--port 3322']);
 
 	mainWindow = new BrowserWindow({
-        x: 0,
-        y: 0,
-        width: 1366,
-        height: 530,
-        icon: "images/logo.ico",
-        show: false
+		x: 0,
+		y: 0,
+		width: 1366,
+		height: 530,
+		icon: "images/logo.ico",
+		show: false
 	});
 
 	mainWindow.setPosition(0, 0);
@@ -31,7 +31,7 @@ function createWindow() {
 		});
 	});
 
-    mainWindow.setMenu(null);
+	mainWindow.setMenu(null);
 	mainWindow.on('closed', function() {
 		mainWindow = null;
 	});
@@ -43,14 +43,14 @@ app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
-    app.quit();
+	app.quit();
 });
 
 app.on('quit', function() {
-    console.log('Application quit. Killing tornado server.');
+	console.log('Application quit. Killing tornado server.');
 
-    // Kill tornado server child process.
-    server.kill('SIGINT');
+	// Kill tornado server child process.
+	server.kill('SIGINT');
 });
 
 app.on('activate', function() {

@@ -1,204 +1,204 @@
 
 /* Disgusting, pls fix */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 body {
-    font-family: "Source Sans Pro";
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    color: black;
-    overflow: hidden;
-    background: #F2F2F2;
-    /* TODO Implement actual font sizing */
-    font-size: 80%;
+	font-family: "Source Sans Pro";
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: black;
+	overflow: hidden;
+	background: #F2F2F2;
+	/* TODO Implement actual font sizing */
+	font-size: 80%;
 }
 button,
 input[type="text"],
 input[type="number"],
 .select-container,
 select {
-    color: white;
-    background: #444;
-    border: none;
-    font-size: 14px;
-    padding: 6px 8px;
-    cursor: pointer;
-    outline: 0;
+	color: white;
+	background: #444;
+	border: none;
+	font-size: 14px;
+	padding: 6px 8px;
+	cursor: pointer;
+	outline: 0;
 }
 .select-container {
-    padding: 0;
-    display: inline-block;
+	padding: 0;
+	display: inline-block;
 }
 select {
-    border: none;
-    background: none;
-    color: white;
+	border: none;
+	background: none;
+	color: white;
 }
 input[type="text"],
 input[type="number"] {
-    cursor: text;
+	cursor: text;
 }
 input[type="checkbox"] {
-    -webkit-filter: saturate(0);
-    filter: saturate(0);
+	-webkit-filter: saturate(0);
+	filter: saturate(0);
 }
 hr {
-    height: 0;
-    border: 2px solid #ddd;
-    margin: 10px 60px;
+	height: 0;
+	border: 2px solid #ddd;
+	margin: 10px 60px;
 }
 h1 {
-    font-size: 1.4em;
-    font-weight: 900;
+	font-size: 1.4em;
+	font-weight: 900;
 }
 #camera h1, table h1 {
-    margin: 0.5em 0.2em;
-    text-transform: uppercase;
+	margin: 0.5em 0.2em;
+	text-transform: uppercase;
 }
 
 /* Major interface components */
 #top {
-    margin: 35px;
-    vertical-align: middle;
-    text-transform: lowercase;
+	margin: 35px;
+	vertical-align: middle;
+	text-transform: lowercase;
 }
 #top span {
-    display: inline-block;
-    float: left;
-    margin: .5em;
+	display: inline-block;
+	float: left;
+	margin: .5em;
 }
 #top span i {
-    margin-right: .5em;
+	margin-right: .5em;
 }
 #logo {
-    width: 7.5em;
-    margin-right: 20px;
-    vertical-align: middle;
-    display: inline-block;
-    float: left;
+	width: 7.5em;
+	margin-right: 20px;
+	vertical-align: middle;
+	display: inline-block;
+	float: left;
 }
 #status {
-    margin-top: 20px;
-    color: #222;
+	margin-top: 20px;
+	color: #222;
 }
 #status h1 {
-    font-size: 2.2em;
-    font-weight: 900;
-    line-height: 0.9;
+	font-size: 2.2em;
+	font-weight: 900;
+	line-height: 0.9;
 }
 #status h2 {
-    font-size: 1em;
-    font-weight: 900;
-    text-transform: uppercase;
+	font-size: 1em;
+	font-weight: 900;
+	text-transform: uppercase;
 }
 #robot-state::after {
-    content: "";
-    display: inline-block;
-    margin-left: 0.5em;
-    background: #EC644B;
-    width: 1.125em;
-    height: 0.5em;
+	content: "";
+	display: inline-block;
+	margin-left: 0.5em;
+	background: #EC644B;
+	width: 1.125em;
+	height: 0.5em;
 }
 #robot-state.connected::after {
-    background: #87D37C;
+	background: #87D37C;
 }
 #status-code {
-    position: fixed;
-    top: 30px;
-    right: 60px;
-    text-align: right;
-    color: #2E6DB0;
+	position: fixed;
+	top: 30px;
+	right: 60px;
+	text-align: right;
+	color: #2E6DB0;
 }
 #status-code.bad {
-    color: #EF4836;
+	color: #EF4836;
 }
 #status-code h1 {
-    font-size: 3.5em;
-    font-weight: 900;
-    text-transform: uppercase;
+	font-size: 3.5em;
+	font-weight: 900;
+	text-transform: uppercase;
 }
 #status-code h2 {
-    font-size: 0.85em;
-    line-height: 0;
+	font-size: 0.85em;
+	line-height: 0;
 }
 body > #categories > div {
 
 }
 #camera {
-    position: fixed;
-    bottom: 40px;
-    left: 60px;
-    font-size: 1em;
+	position: fixed;
+	bottom: 40px;
+	left: 60px;
+	font-size: 1em;
 }
 #camera img,
 #camera object {
-    width: 30em;
-    background-color: #ccc;
+	width: 30em;
+	background-color: #ccc;
 }
 #camera img.offline::after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    content: "Offline";
-    font-size: 2em;
-    font-weight: 300;
-    text-transform: uppercase;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%);
+	content: "Offline";
+	font-size: 2em;
+	font-weight: 300;
+	text-transform: uppercase;
 }
 #table {
-    position: fixed;
-    bottom: 40px;
-    right: 60px;
-    text-transform: uppercase;
+	position: fixed;
+	bottom: 40px;
+	right: 60px;
+	text-transform: uppercase;
 }
 table {
-    display: block;
-    border-collapse: collapse;
-    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
-    max-height: 350px;
-    overflow-y: scroll;
+	display: block;
+	border-collapse: collapse;
+	box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
+	max-height: 350px;
+	overflow-y: scroll;
 }
 th, td {
-    text-align: left;
-    padding: 1em 2.8em;
+	text-align: left;
+	padding: 1em 2.8em;
 }
 tr {
-    background: #ebebeb;
+	background: #ebebeb;
 }
 tr:nth-child(even) {background-color: #dfdfdf}
 th {
-    background-color: #2E6DB0;
-    color: white;
+	background-color: #2E6DB0;
+	color: white;
 }
 
 /* Smaller displays (do we need this?)
 @media (max-width: 1000px), (max-height: 600px) {
-    #top {
-        font-size: 80%;
-    }
-    #camera, #table {
-        font-size: 80%;
-    }
+	#top {
+		font-size: 80%;
+	}
+	#camera, #table {
+		font-size: 80%;
+	}
 
-    table {
-        max-height: 300px;
-    }
+	table {
+		max-height: 300px;
+	}
 }
 
 @media (max-width: 800px), (max-height: 500px) {
-    #top {
-        font-size: 70%;
-    }
-    #camera, #table {
-        font-size: 60%;
-    }
+	#top {
+		font-size: 70%;
+	}
+	#camera, #table {
+		font-size: 60%;
+	}
 
-    table {
-        max-height: 200px;
-    }
+	table {
+		max-height: 200px;
+	}
 }*/
