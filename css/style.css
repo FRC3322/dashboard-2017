@@ -11,44 +11,25 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	color: black;
-	overflow: hidden;
-	background: #f7f7f7;
-	/* TODO Implement actual font sizing */
-	font-size: 80%;
 	color: #222;
+	background: #f8f8f8;
+	font-size: 75%;
+}
+body.dark {
+
 }
 button,
 input[type="text"],
 input[type="number"],
-.select-container,
 select {
+	display: block;
 	border: none;
 	background: #ddd;
 	font-size: .8em;
 	padding: .4em .8em;
 	outline: 0;
 }
-.select-container {
-	padding: 0;
-	display: inline-block;
-}
-select h1 {
-	font-size: .5em;
-}
-input[type="checkbox"] {
-	-webkit-filter: saturate(0);
-	filter: saturate(0);
-}
-hr {
-	height: 0;
-	border: 2px solid #ddd;
-	margin: 10px 60px;
-}
-h1 {
-	font-size: 1.2em;
-	font-weight: 900;
-}
+
 .light {
 	text-transform: capitalize;
 }
@@ -56,7 +37,7 @@ h1 {
 	content: "";
 	display: inline-block;
 	margin-left: 0.5em;
-	background: #CCC;
+	background: #bbb;
 	width: 1.625em;
 	height: .75em;
 }
@@ -77,6 +58,67 @@ h1 {
 	background: #29609a;
 }
 
+/* Dropdown */
+.dropdown > a {
+	display: inline-block;
+	position: relative;
+	padding: .5em .75em;
+	background: #eee;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.dropdown ul {
+	display: none;
+	position: absolute;
+	transform: translate(-10%, 10px);
+	background: #ddd;
+	min-width: 80px;
+	max-width: 200px;
+	z-index: 1;
+}
+.dropdown ul::after {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-bottom-color: #ddd;
+	border-width: 10px;
+	margin-left: -10px;
+}
+.dropdown.active ul {
+	display: block;
+}
+.dropdown.active > a {
+	background: #ddd;
+}
+.dropdown li {
+	display: inline-block;
+	list-style: none;
+}
+.dropdown li  {
+	display: block;
+	padding: .75em;
+	color: #333;
+	text-decoration: none;
+}
+hr {
+	height: 0;
+	border: 2px solid #ddd;
+	margin: 10px 60px;
+}
+h1 {
+	font-size: 1.2em;
+	font-weight: 900;
+}
+h2 {
+	font-size: 1em;
+	font-weight: 700;
+}
+
 /* Major interface components */
 #top {
 	margin: 30px 40px;
@@ -85,13 +127,12 @@ h1 {
 	font-size: 80%;
 	overflow: hidden;
 }
-#top span {
-	display: inline-block;
+#top .dropdown {
 	float: left;
 	margin: .5em;
 }
-#top span i {
-	margin-right: .5em;
+#top .dropdown i {
+	margin-right: .25em;
 }
 #logo {
 	width: 7.5em;
@@ -103,25 +144,15 @@ h1 {
 	font-size: 2.2em;
 	font-weight: 900;
 	line-height: 0.9;
+	text-transform: lowercase;
 }
 #status h2 {
 	font-size: 1em;
 	font-weight: 900;
 	text-transform: uppercase;
 }
-#robot-state::after {
-	content: "";
-	display: inline-block;
-	margin-left: 0.5em;
-	background: #EC644B;
-	width: 1.125em;
-	height: 0.5em;
-}
-#robot-state.connected::after {
-	background: #87D37C;
-}
 #status-code {
-	position: fixed;
+	position: absolute;
 	top: 30px;
 	right: 40px;
 	text-align: right;
@@ -148,6 +179,9 @@ main > div {
 	vertical-align: top;
 	margin: 0 10px;
 }
+main > div > div {
+	box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
+}
 main h1 {
 	margin: 0.5em 0.2em;
 	text-transform: uppercase;
@@ -155,26 +189,33 @@ main h1 {
 
 /* Specific styling */
 #properties {
-	text-align: center;
-}
-#properties h1 {
 	text-align: left;
+}
+#properties h2 {
+	text-align: center;
 }
 #properties div {
 	vertical-align: top;
 	display: inline-block;
-	min-width: 125px;
+	min-width: 150px;
+	margin-right: 1em;
+	padding: 1em;
+	padding-top: .5em;
+	background: #eee;
 }
-#camera img,
-table {
-	box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
-}
-#camera img {
+#properties label {
 	display: block;
-	width: 30em;
-	margin-bottom: 10px;
+	margin: auto;
 }
-#camera img.offline::after {
+#camera div {
+	display: block;
+	width: 20em;
+	height: 13em;
+	margin-bottom: 10px;
+	background: #eee;
+
+}
+#camera div.offline::after {
 	position: absolute;
 	top: 50%;
 	left: 50%;

@@ -13,10 +13,20 @@
 		<img id="logo" src="images/logo.svg">
 		<div id="status">
 			<h2>Status</h2>
-			<h1 id="robot-state">Unknown</h1>
+			<h1 id="robot-state" class="light">Unknown</h1>
 
-			<span><i class="fa fa-cog"></i>Settings</span>
-			<span><i class="fa fa-info"></i>About</span>
+			<div class="dropdown">
+				<a><i class="fa fa-cog"></i>Settings</a>
+				<ul>
+					<li><label><input type="checkbox" value="dark_theme"> Dark theme</label></li>
+				</ul>
+			</div>
+			<div class="dropdown">
+				<a><i class="fa fa-info"></i>Info</a>
+				<ul>
+					<li><a href="#">TheWhiteBreadMan and Andriyasdf</a></li>
+				</ul>
+			</div>
 		</div>
 
 		<div id="status-code">
@@ -28,12 +38,13 @@
 	<main>
 		<div id="camera">
 			<h1>Camera feeds</h1>
-			<img src="http://10.33.22.32:8080/?action=stream" alt="Camera 1">
-			<img src="http://10.33.22.32:8080/?action=stream" alt="Camera 2">
+			<div></div>
+			<div></div>
 		</div>
 
 		<div>
 			<h1>Speed</h1>
+			<h2 id="robot_speed"></h2>
 			<canvas id="speed"></canvas>
 		</div>
 
@@ -48,13 +59,15 @@
 				<h2>Auton</h2>
 				<p id="auton-ready" class="light">Auton ready</p>
 
-				<h3>Start position</h3>
-				<select id="startPos">
-					<option value="0">---</option>
-					<option value="1">Left</option>
-					<option value="2">Center</option>
-					<option value="3">Right</option>
-				</select>
+				<div class="select-container">
+					<p>Start position</p>
+					<select id="start_pos">
+						<option value="0" selected disabled>Choose one</option>
+						<option value="1">Left</option>
+						<option value="2">Center</option>
+						<option value="3">Right</option>
+					</select>
+				</div>
 			</div>
 		</div>
 

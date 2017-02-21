@@ -1,19 +1,34 @@
 NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 NetworkTables.addGlobalListener(onValueChanged, true);
 
+var nt = [
+	["/SmartDashboard/test", 2]
+];
 var speed = [
 	[1, 2, 3, 4],
 	[3, 7, 6, 1]
 ];
 
+//5810 & 5809 ports
+$('.dropdown > a').click(function(event) {
+	$(this).parent().toggleClass('active');
+});
+
+$('#start_pos').change(function(event) {
+	NetworkTables.setValue('/SmartDashboard/start_pos', $(this).val());
+});
+
+
 function onRobotConnection(connected) {
 	var state = connected ? 'Connected' : 'Disconnected';
 	console.log(state);
 	$('#robot-state').text(state);
+
 	if (connected) {
-		$('#robot-state').addClass("connected");
+		setLight('#robot-state', 2);
 	} else {
-		$('#robot-state').removeClass("connected");
+		setLight('*', 0);
+		setLight('#robot-state', 1);
 	}
 }
 
@@ -25,16 +40,13 @@ function onValueChanged(key, value, isNew) {
 		value = false;
 	}
 
-	// Log value changes
-	console.log(key + " | " + value);
-
 	switch (key) {
 		case '/SmartDashboard/time_running':
 			// When this NetworkTables variable is true, the timer will start.
 			var s = 135;
 			if (value) {
 				// Make sure timer is reset to black when it starts
-				$("#timer").css(color, 'black');
+				$('#timer').css(color, 'black');
 				var countdown = setInterval(function() {
 					s--;
 					var m = Math.floor(s / 60);
@@ -46,11 +58,11 @@ function onValueChanged(key, value, isNew) {
 						clearTimeout(countdown);
 						return;
 					} else if (s <= 15) {
-						$("#timer").css(color, (s % 2 === 0) ? '#FF3030' : 'transparent');
+						$('#timer').css(color, (s % 2 === 0) ? '#FF3030' : 'transparent');
 					} else if (s <= 30) {
-						$("#timer").css(color, '#FF3030');
+						$('#timer').css(color, '#FF3030');
 					}
-					$("#timer").innerHTML = m + ':' + visualS;
+					$('#timer').innerHTML = m + ':' + visualS;
 				}, 1000);
 			} else {
 				s = 135;
@@ -58,7 +70,9 @@ function onValueChanged(key, value, isNew) {
 			NetworkTables.setValue(key, false);
 			break;
 		case '/SmartDashboard/robot_speed':
-			speed.push(value);
+			speed[0].push(1);
+			speed[1].push(value);
+			$('#robot_speed').text(Math.round(value) + " feet/sec")
 			break;
 		case '/SmartDashboard/holder':
 			if (value) {
@@ -68,30 +82,35 @@ function onValueChanged(key, value, isNew) {
 			}
 			break;
 		case '/SmartDashboard/start_pos':
-			if (value != 0) {
-				$('#auton-ready').switchClass('red', 'grn');
-			} else {
-				$('#auton-ready').switchClass('grn', 'red');
-			}
+			setLight('#start_pos', value != 0 ? 1 : 2);
 			break;
 		case '/SmartDashboard/shift_state':
-			if (value == 0) {
-				$('#auton-ready').addClass('grn');
-			} else {
-				$('#auton-ready').removeClass('grn');
-			}
+			setLight('#shift-state', value ? 2 : 1);
 			break;
-		case '/SmartDashboard/shift_state':
-			if (value == 0) {
-				$('#auton-ready').addClass('grn');
-			} else {
-				$('#auton-ready').removeClass('grn');
-			}
+		default:
+			console.log(key + ' | ' + value);
 			break;
 	}
 }
 
-var speedChart = new Chart($("#speed"), {
+function setLight(object, state) {
+	switch(state) {
+		case 0:
+			// off
+			$(object).removeClass('grn red');
+			break;
+		case 1:
+			// red
+			$(object).switchClass('grn', 'red');
+			break;
+		case 2:
+			// green
+			$(object).switchClass('red', 'grn');
+			break;
+	}
+}
+
+var speedChart = new Chart($('#speed'), {
 	type: 'line',
 	data: {
 		labels: speed[0],
