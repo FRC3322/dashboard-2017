@@ -1,12 +1,9 @@
 NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 NetworkTables.addGlobalListener(onValueChanged, true);
 
+var connected, i;
 var nt = [
 	["/SmartDashboard/test", 2]
-];
-var speed = [
-	[1, 2, 3, 4],
-	[3, 7, 6, 1]
 ];
 
 //5810 & 5809 ports
@@ -20,19 +17,24 @@ $('#start_pos').change(function(event) {
 
 
 function onRobotConnection(connected) {
+	this.connected = connected;
 	var state = connected ? 'Connected' : 'Disconnected';
 	console.log(state);
 	$('#robot-state').text(state);
 
 	if (connected) {
-		setLight('#robot-state', 2);
+		setLight('#robot-state', true);
 	} else {
-		setLight('*', 0);
-		setLight('#robot-state', 1);
+		setLight('*', null);
+		setLight('#robot-state', false);
 	}
 }
 
 function onValueChanged(key, value, isNew) {
+	if (!connected) {
+		return false;
+	}
+
 	// Sometimes, NetworkTables will pass booleans as strings. This corrects for that.
 	if (value == 'true') {
 		value = true;
@@ -41,51 +43,19 @@ function onValueChanged(key, value, isNew) {
 	}
 
 	switch (key) {
-		case '/SmartDashboard/time_running':
-			// When this NetworkTables variable is true, the timer will start.
-			var s = 135;
-			if (value) {
-				// Make sure timer is reset to black when it starts
-				$('#timer').css(color, 'black');
-				var countdown = setInterval(function() {
-					s--;
-					var m = Math.floor(s / 60);
-					var visualS = (s % 60);
-
-					visualS = visualS < 10 ? '0' + visualS : visualS;
-
-					if (s < 0) {
-						clearTimeout(countdown);
-						return;
-					} else if (s <= 15) {
-						$('#timer').css(color, (s % 2 === 0) ? '#FF3030' : 'transparent');
-					} else if (s <= 30) {
-						$('#timer').css(color, '#FF3030');
-					}
-					$('#timer').innerHTML = m + ':' + visualS;
-				}, 1000);
-			} else {
-				s = 135;
-			}
-			NetworkTables.setValue(key, false);
-			break;
 		case '/SmartDashboard/robot_speed':
-			speed[0].push(1);
+			speed[x].push(1);
 			speed[1].push(value);
 			$('#robot_speed').text(Math.round(value) + " feet/sec")
 			break;
 		case '/SmartDashboard/holder':
-			if (value) {
-				$('#holder').addClass('grn');
-			} else {
-				$('#holder').removeClass('grn');
-			}
+			setLight('#holder', value)
 			break;
 		case '/SmartDashboard/start_pos':
-			setLight('#start_pos', value != 0 ? 1 : 2);
+			setLight('#start_pos', value != 0);
 			break;
 		case '/SmartDashboard/shift_state':
-			setLight('#shift-state', value ? 2 : 1);
+			setLight('#shift-state', value);
 			break;
 		default:
 			console.log(key + ' | ' + value);
@@ -95,15 +65,15 @@ function onValueChanged(key, value, isNew) {
 
 function setLight(object, state) {
 	switch(state) {
-		case 0:
+		case null:
 			// off
 			$(object).removeClass('grn red');
 			break;
-		case 1:
+		case false:
 			// red
 			$(object).switchClass('grn', 'red');
 			break;
-		case 2:
+		case true:
 			// green
 			$(object).switchClass('red', 'grn');
 			break;
@@ -113,36 +83,9 @@ function setLight(object, state) {
 var speedChart = new Chart($('#speed'), {
 	type: 'line',
 	data: {
-		labels: speed[0],
 		datasets: [{
 			label: 'Speed',
-			data: speed[1],
-			backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255, 159, 64, 0.2)'
-			],
-			borderColor: [
-				'rgba(255,99,132,1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
-			],
-			borderWidth: 1
+			data: speed
 		}]
-	},
-	options: {
-		scales: {
-			yAxes: [{
-				ticks: {
-					beginAtZero:true
-				}
-			}]
-		}
 	}
 });

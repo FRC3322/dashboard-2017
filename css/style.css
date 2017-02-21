@@ -48,7 +48,6 @@ select {
 	background: #EC644B;
 }
 .button {
-	font-size: .85em;
 	padding: .75em 1.5em;
 	background: #2E6DB0;
 	color: white;
@@ -124,7 +123,6 @@ h2 {
 	margin: 30px 40px;
 	vertical-align: middle;
 	text-transform: lowercase;
-	font-size: 80%;
 	overflow: hidden;
 }
 #top .dropdown {
@@ -135,7 +133,7 @@ h2 {
 	margin-right: .25em;
 }
 #logo {
-	width: 7.5em;
+	width: 8em;
 	margin-right: 20px;
 	vertical-align: middle;
 	float: left;
