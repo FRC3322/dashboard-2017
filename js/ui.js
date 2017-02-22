@@ -14,6 +14,12 @@ $('.dropdown > a').click(function(event) {
 	$(this).parent().toggleClass('active');
 });
 
+$('#camera-video').click(function(event)
+ {
+    $("#camera-video").css("background", ($("#camera-video").css("background").includes('url("http://10.33.22.7:5809/?action=stream")')) ? ('url("http://10.33.22.7:5810/?action=stream")') : ('url("http://10.33.22.7:5809/?action=stream")'));
+
+ });
+
 $('#start_pos').change(function(event) {
 	NetworkTables.setValue('/SmartDashboard/start_pos', $(this).val());
 });
