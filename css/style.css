@@ -210,7 +210,8 @@ main h1 {
 	width: 20em;
 	height: 13em;
 	margin-bottom: 10px;
-	background: #eee;
+	/*5810 & 5809 ports*/
+	background: url("http://10.33.22.7:8080/?action=stream"), #eee;
 
 }
 #camera div.offline::after {
@@ -229,24 +230,7 @@ main h1 {
 	right: 40px;
 	text-transform: uppercase;
 }
-table {
-	display: block;
-	border-collapse: collapse;
-	max-height: 350px;
-	overflow-y: scroll;
-}
-th, td {
-	text-align: left;
-	padding: 1em 2.8em;
-}
-tr {
-	background: #ebebeb;
-}
-tr:nth-child(even) {background-color: #dfdfdf}
-th {
-	background-color: #2E6DB0;
-	color: white;
-}
+
 
 /* Smaller displays (do we need this?)
 @media (max-width: 1000px), (max-height: 600px) {

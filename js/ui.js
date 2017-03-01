@@ -3,10 +3,11 @@ NetworkTables.addGlobalListener(onValueChanged, true);
 
 var connected, i;
 var nt = [
-	["/SmartDashboard/test", 2]
+	["/SmartDashboard/test", 2],
+	["/SmartDashboard/test2", "string"],
+	["/SmartDashboard/bool", false]
 ];
 
-//5810 & 5809 ports
 $('.dropdown > a').click(function(event) {
 	$(this).parent().toggleClass('active');
 });
@@ -15,6 +16,23 @@ $('#start_pos').change(function(event) {
 	NetworkTables.setValue('/SmartDashboard/start_pos', $(this).val());
 });
 
+$('#network-table').DataTable({
+	data: nt,
+	columns: [
+		{ title: "Key" },
+		{ title: "Value" }
+	]
+});
+
+var speedChart = new Chart($('#speed'), {
+	type: 'line',
+	data: {
+		datasets: [{
+			label: 'Speed',
+			data: speed
+		}]
+	}
+});
 
 function onRobotConnection(connected) {
 	this.connected = connected;
@@ -42,10 +60,14 @@ function onValueChanged(key, value, isNew) {
 		value = false;
 	}
 
+	if (isNew) {
+		nt.push([key, value]);
+	} else {
+		// Update table
+	}
+
 	switch (key) {
 		case '/SmartDashboard/robot_speed':
-			speed[x].push(1);
-			speed[1].push(value);
 			$('#robot_speed').text(Math.round(value) + " feet/sec")
 			break;
 		case '/SmartDashboard/holder':
@@ -79,13 +101,3 @@ function setLight(object, state) {
 			break;
 	}
 }
-
-var speedChart = new Chart($('#speed'), {
-	type: 'line',
-	data: {
-		datasets: [{
-			label: 'Speed',
-			data: speed
-		}]
-	}
-});
