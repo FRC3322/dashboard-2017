@@ -1,17 +1,14 @@
 NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 NetworkTables.addGlobalListener(onValueChanged, true);
 
-var table;
+var table,
+// Change these to 5809 and 5810 for comp bot
+camera1 = 'url("http://10.33.22.7:5809/?action=stream")',
+camera2 = 'url("http://10.33.22.7:5810/?action=stream")';
 
-$('.dropdown > a').click(function(event) {
-	$(this).parent().toggleClass('active');
-});
-
-$('#start_pos').change(function(event) {
-	NetworkTables.setValue('/SmartDashboard/start_pos', $(this).val());
-});
 
 table = $('#network-table').DataTable({
+	data: [],
 	columns: [
 		{
 			title: "Key",
@@ -19,21 +16,23 @@ table = $('#network-table').DataTable({
 		{
 			title: "Value",
 		}
-	]
+	],
+	"lengthChange": false
 });
 
-/*var speedChart = new Chart($('#speed'), {
+var speed = new Chart($('#speed'), {
 	type: 'line',
 	data: {
 		datasets: [{
 			label: 'Speed',
-			data: speed
+			data: []
 		}]
 	}
-});*/
+});
 
 function onRobotConnection(connected) {
 	var state = connected ? 'Connected' : 'Disconnected';
+
 	console.log(state);
 	$('#robot-state').text(state);
 
@@ -42,10 +41,15 @@ function onRobotConnection(connected) {
 	} else {
 		setLight('*', null);
 		setLight('#robot-state', false);
+
+		// Reset the DataTable
+		//table.clear().draw();
 	}
 }
 
 function onValueChanged(key, value, isNew) {
+	var k_sub = key.replace("/SmartDashboard/", "");
+
 	// Sometimes, NetworkTables will pass booleans as strings. This corrects for that.
 	if (value == 'true') {
 		value = true;
@@ -53,31 +57,45 @@ function onValueChanged(key, value, isNew) {
 		value = false;
 	}
 
+	// Update the DataTable to reflect the SmartDashboard variables
 	if (isNew) {
-		table.row.add([key.replace('/SmartDashboard/', ''), value]).draw();
+		//table.row.add([key, value]).draw();
 	} else {
 		// Update existing row with new value
-		table.rows().every(function() {
+		table.rows().every(function(i) {
 			if (key == this.row().data()) {
 				row(i).data([key, value]);
 				console.log("match found!");
 			}
 		});
 	}
-	table.draw();
 
-	switch (key.replace('/SmartDashboard/', '')) {
+	// Automatically set the lights of certain indicators
+	if ($("#" + k_sub).hasClass("light auto")) {
+		setLight("#" + k_sub, value);
+	}
+
+	switch (k_sub) {
 		case 'robot_speed':
 			$('#robot_speed').text(Math.round(value) + " feet/sec");
 			break;
-		case 'holder':
-			setLight('#holder', value);
+		case 'shift_state':
+			setLight('#gearing', value == "high" ? true : false);
 			break;
 		case 'start_pos':
-			setLight('#start_pos', value != 0);
+			$("#start_pos").val(value);
+			setLight('#auton-ready', value != 0);
 			break;
-		case 'shift_state':
-			setLight('#shift-state', value);
+		case 'drive_angle_p_term':
+			$("#p_term").val(value);
+			break;
+		case 'blegh':
+			if (value) {
+				$("#overlay").addClass("active");
+				setTimeout(function() {
+					$("#overlay").removeClass("active");
+				}, 1000);
+			}
 			break;
 		default:
 			console.log(key + ' = ' + value);

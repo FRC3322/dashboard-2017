@@ -6,17 +6,16 @@
 	padding: 0;
 }
 body {
-	font-family: "Source Sans Pro";
+	font-family: "Fjalla One", "Source Sans Pro";
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
 	color: #222;
 	background: #f8f8f8;
-	font-size: 75%;
 }
 body.dark {
-
+	/* dark theme */
 }
 button,
 input[type="text"],
@@ -38,7 +37,7 @@ select {
 	display: inline-block;
 	margin-left: 0.5em;
 	background: #bbb;
-	width: 1.625em;
+	width: 1.5em;
 	height: .75em;
 }
 .light.grn::after {
@@ -79,7 +78,7 @@ select {
 	bottom: 100%;
 	left: 50%;
 	border: solid transparent;
-	content: " ";
+	content: "";
 	height: 0;
 	width: 0;
 	position: absolute;
@@ -98,16 +97,18 @@ select {
 	display: inline-block;
 	list-style: none;
 }
-.dropdown li  {
+.dropdown li {
 	display: block;
 	padding: .75em;
 	color: #333;
-	text-decoration: none;
+	text-align: center;
 }
 hr {
 	height: 0;
 	border: 2px solid #ddd;
-	margin: 10px 60px;
+	margin: 20px 10px;
+	text-align: center;
+	font-size: 20px;
 }
 h1 {
 	font-size: 1.2em;
@@ -121,9 +122,11 @@ h2 {
 /* Major interface components */
 #top {
 	margin: 30px 40px;
+	margin-bottom: 20px;
 	vertical-align: middle;
 	text-transform: lowercase;
 	overflow: hidden;
+	font-size: 80%;
 }
 #top .dropdown {
 	float: left;
@@ -138,6 +141,9 @@ h2 {
 	vertical-align: middle;
 	float: left;
 }
+#status {
+	overflow: hidden;
+}
 #status h1 {
 	font-size: 2.2em;
 	font-weight: 900;
@@ -149,36 +155,33 @@ h2 {
 	font-weight: 900;
 	text-transform: uppercase;
 }
-#status-code {
+#important {
 	position: absolute;
 	top: 30px;
 	right: 40px;
 	text-align: right;
 	color: #2E6DB0;
 }
-#status-code.bad {
+#important.bad {
 	color: #EF4836;
 }
-#status-code h1 {
+#important h1 {
 	font-size: 3.5em;
 	font-weight: 900;
 	text-transform: uppercase;
 }
-#status-code h2 {
+#important h2 {
 	font-size: 0.85em;
-	line-height: 0;
 }
 main {
 	clear: both;
-	margin: 0 40px;
+	margin: 20px 40px;
+	font-size: 85%;
 }
 main > div {
 	display: inline-block;
 	vertical-align: top;
 	margin: 0 10px;
-}
-main > div > div {
-	box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
 }
 main h1 {
 	margin: 0.5em 0.2em;
@@ -186,49 +189,72 @@ main h1 {
 }
 
 /* Specific styling */
+#foo {
+	width: 30em;
+}
+#camera-stream {
+	display: block;
+	width: 100%;
+	height: 18em;
+	margin-bottom: 10px;
+	background: #222;
+	background-position: center;
+	background-size: cover;
+	box-shadow: 4px 4px 2px rgba(50, 50, 0, 0.15);
+}
 #properties {
 	text-align: left;
 }
 #properties h2 {
 	text-align: center;
+	margin: .25em;
 }
 #properties div {
 	vertical-align: top;
 	display: inline-block;
 	min-width: 150px;
 	margin-right: 1em;
-	padding: 1em;
+	padding: 2em;
 	padding-top: .5em;
 	background: #eee;
 }
+#properties > div {
+	box-shadow: 4px 4px 2px rgba(50, 50, 0, 0.15);
+}
+#properties .light,
 #properties label {
-	display: block;
-	margin: auto;
+	font-family: "Source Sans Pro";
 }
-#camera div {
-	display: block;
-	width: 20em;
-	height: 13em;
-	margin-bottom: 10px;
-	/*5810 & 5809 ports*/
-	background: url("http://10.33.22.7:8080/?action=stream"), #eee;
 
+#table {
+	text-transform: uppercase;
 }
-#camera div.offline::after {
+#table > div {
+	box-shadow: 4px 4px 2px rgba(50, 50, 0, 0.15);
+}
+
+#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #809E49;
+	pointer-events: none;
+	opacity: 0;
+	transition: .1s ease;
+}
+#overlay h1 {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%);
-	content: "Offline";
-	font-size: 2em;
-	font-weight: 300;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 4em;
 	text-transform: uppercase;
 }
-#table {
-	position: fixed;
-	bottom: 30px;
-	right: 40px;
-	text-transform: uppercase;
+#overlay.active {
+	opacity: 1;
 }
 
 

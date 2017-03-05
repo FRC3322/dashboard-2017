@@ -8,10 +8,12 @@
 	<link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/node_modules/datatables.net-dt/css/jQuery.dataTables.css">
 	<link rel="stylesheet" href="/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div id="top">
 		<img id="logo" src="images/logo.svg">
+
 		<div id="status">
 			<h2>Status</h2>
 			<h1 id="robot-state" class="light">Unknown</h1>
@@ -28,54 +30,61 @@
 					<li><a href="#">TheWhiteBreadMan and Andriyasdf</a></li>
 				</ul>
 			</div>
+			<br><br><hr>
 		</div>
 
-		<div id="status-code">
+		<div id="important">
 			<h1>NOML</h1>
-			<h2 id="timer">(hopefully) no issues</h2>
+			<h2 id="timer">other important info</h2>
 		</div>
 	</div>
 
 	<main>
-		<div id="camera">
-			<h1>Camera feeds</h1>
-			<div></div>
-		</div>
-
-		<div>
-			<h1>Speed</h1>
-			<h2 id="robot_speed"></h2>
-			<canvas id="speed" style="width: 300px; height: 200px;"></canvas>
+		<div id="foo">
+			<div>
+				<h1>Speed</h1>
+				<h2 id="robot_speed"></h2>
+				<canvas id="speed"></canvas>
+			</div>
+			
+			<div>
+				<h1>Camera feed</h1>
+				<div id="camera-stream"></div>
+			</div>
 		</div>
 
 		<div id="properties">
 			<h1>Properties</h1>
+			<p id="enabled" class="light auto">Enabled</p>
+
 			<div>
 				<h2>General</h2>
-				<p id="holder" class="light">Holder</p>
+				<p id="holder" class="light auto">Holder</p>
 				<p id="gearing" class="light">Gearing</p>
+				<label>P-term<input type="text" id="p_term"></label>
 			</div>
 			<div>
 				<h2>Auton</h2>
 				<p id="auton-ready" class="light">Auton ready</p>
 
-				<div class="select-container">
-					<p>Start position</p>
-					<select id="start_pos">
-						<option value="0" selected disabled>Choose one</option>
+				<label>Start position<select id="start_pos">
+						<option value="0" selected disabled>Not set</option>
 						<option value="1">Left</option>
 						<option value="2">Center</option>
 						<option value="3">Right</option>
-					</select>
-				</div>
+				</select></label>
 			</div>
 		</div>
-		
+
 		<div id="table">
 			<h1>Table</h1>
-			<table id="network-table" class="display" width="100%"></table>
+			<table id="network-table" class="display"></table>
 		</div>
 	</main>
+
+	<div id="overlay">
+		<h1>Sensor activated</h1>
+	</div>
 
 	<script src="/networktables/networktables.js"></script>
 	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
@@ -83,5 +92,6 @@
 	<script src="/node_modules/datatables.net/js/jquery.dataTables.js"></script>
 	<script src="/node_modules/chart.js/dist/Chart.bundle.min.js"></script>
 	<script src="js/ui.js"></script>
+	<script src="js/events.js"></script>
 </body>
 </html>
