@@ -225,7 +225,28 @@ main h1 {
 #properties label {
 	font-family: "Source Sans Pro";
 }
+<<<<<<< HEAD
 
+=======
+#camera-video {
+	display: block;
+	width: 20em;
+	height: 13em;
+	margin-bottom: 10px;
+	background: url("http://10.33.22.7:5809/?action=stream");
+}
+
+#camera div.offline::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%);
+	content: "Offline";
+	font-size: 2em;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+>>>>>>> c2b091e4d5688add2cef5bf24b535948fc11bb41
 #table {
 	text-transform: uppercase;
 }

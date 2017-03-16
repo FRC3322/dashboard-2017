@@ -7,6 +7,7 @@ camera1 = 'url("http://10.33.22.7:5809/?action=stream")',
 camera2 = 'url("http://10.33.22.7:5810/?action=stream")';
 
 
+<<<<<<< HEAD
 table = $('#network-table').DataTable({
 	data: [],
 	columns: [
@@ -18,6 +19,16 @@ table = $('#network-table').DataTable({
 		}
 	],
 	"lengthChange": false
+=======
+$('#camera-video').click(function(event)
+ {
+    $("#camera-video").css("background", ($("#camera-video").css("background").includes('url("http://10.33.22.7:5809/?action=stream")')) ? ('url("http://10.33.22.7:5810/?action=stream")') : ('url("http://10.33.22.7:5809/?action=stream")'));
+
+ });
+
+$('#start_pos').change(function(event) {
+	NetworkTables.setValue('/SmartDashboard/start_pos', $(this).val());
+>>>>>>> c2b091e4d5688add2cef5bf24b535948fc11bb41
 });
 
 var speed = new Chart($('#speed'), {
