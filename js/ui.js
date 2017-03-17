@@ -2,12 +2,10 @@ NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 NetworkTables.addGlobalListener(onValueChanged, true);
 
 var table,
-// Change these to 5809 and 5810 for comp bot
+// Comp bot - 10.33.22.7:5809 & 10.33.22.7:5810
 camera1 = 'url("http://10.33.22.7:5809/?action=stream")',
 camera2 = 'url("http://10.33.22.7:5810/?action=stream")';
 
-
-<<<<<<< HEAD
 table = $('#network-table').DataTable({
 	data: [],
 	columns: [
@@ -19,22 +17,14 @@ table = $('#network-table').DataTable({
 		}
 	],
 	"lengthChange": false
-=======
-$('#camera-video').click(function(event)
- {
-    $("#camera-video").css("background", ($("#camera-video").css("background").includes('url("http://10.33.22.7:5809/?action=stream")')) ? ('url("http://10.33.22.7:5810/?action=stream")') : ('url("http://10.33.22.7:5809/?action=stream")'));
+});
 
- });
-
-$('#camera-video').click(function(event)
- {
-    $("#camera-video").css("background", ($("#camera-video").css("background").includes('url("http://10.33.22.7:5809/?action=stream")')) ? ('url("http://10.33.22.7:5810/?action=stream")') : ('url("http://10.33.22.7:5809/?action=stream")'));
-
- });
+$('#camera-stream').click(function(event) {
+	$("#camera-stream").css("background", ($("#camera-video").css("background").includes(camera1) ? camera2 : camera1));
+});
 
 $('#start_pos').change(function(event) {
 	NetworkTables.setValue('/SmartDashboard/start_pos', $(this).val());
->>>>>>> c2b091e4d5688add2cef5bf24b535948fc11bb41
 });
 
 var speed = new Chart($('#speed'), {
@@ -58,6 +48,7 @@ function onRobotConnection(connected) {
 	} else {
 		setLight('*', null);
 		setLight('#robot-state', false);
+		setLight('#enabled', false);
 
 		// Reset the DataTable
 		//table.clear().draw();
@@ -76,15 +67,9 @@ function onValueChanged(key, value, isNew) {
 
 	// Update the DataTable to reflect the SmartDashboard variables
 	if (isNew) {
-		//table.row.add([key, value]).draw();
+		table.row.add([key, value]).draw();
 	} else {
 		// Update existing row with new value
-		table.rows().every(function(i) {
-			if (key == this.row().data()) {
-				row(i).data([key, value]);
-				console.log("match found!");
-			}
-		});
 	}
 
 	// Automatically set the lights of certain indicators
@@ -112,7 +97,23 @@ function onValueChanged(key, value, isNew) {
 				setTimeout(function() {
 					$("#overlay").removeClass("active");
 				}, 1000);
-			}
+				}
+			break;
+		case 'enabled':
+			var timeLeft = 150;
+
+			setInterval(function() {
+				if (135 > timeLeft > 0) {
+					timeLeft--;
+
+					// MM:SS format
+					var m, s;
+					m = Math.floor(timeLeft % 3600 / 60) > 9 ? Math.floor(timeLeft % 3600 / 60) : "0" + Math.floor(timeLeft % 3600 / 60);
+					s = timeLeft % 60 > 9 ? timeLeft % 60 : "0" + timeLeft % 60;
+
+					$("#timer").text(m + ":" + s);
+				}
+			}, 1000);
 			break;
 		default:
 			console.log(key + ' = ' + value);

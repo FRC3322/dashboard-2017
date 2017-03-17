@@ -106,7 +106,6 @@ select {
 hr {
 	height: 0;
 	border: 2px solid #ddd;
-	margin: 20px 10px;
 	text-align: center;
 	font-size: 20px;
 }
@@ -147,13 +146,16 @@ h2 {
 #status h1 {
 	font-size: 2.2em;
 	font-weight: 900;
-	line-height: 0.9;
 	text-transform: lowercase;
 }
 #status h2 {
 	font-size: 1em;
 	font-weight: 900;
 	text-transform: uppercase;
+}
+#status p {
+	font-size: 1.2em;
+	text-transform: lowercase;
 }
 #important {
 	position: absolute;
