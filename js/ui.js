@@ -1,6 +1,3 @@
-NetworkTables.addRobotConnectionListener(onRobotConnection, true);
-NetworkTables.addGlobalListener(onValueChanged, true);
-
 var table,
 // Comp bot - 10.33.22.7:5809 & 10.33.22.7:5810
 camera1 = 'url("http://10.33.22.7:5809/?action=stream")',
@@ -19,12 +16,22 @@ table = $('#network-table').DataTable({
 	"lengthChange": false
 });
 
+NetworkTables.addRobotConnectionListener(onRobotConnection, true);
+NetworkTables.addGlobalListener(onValueChanged, true);
+
 $('#camera-stream').click(function(event) {
 	$("#camera-stream").css("background", ($("#camera-video").css("background").includes(camera1) ? camera2 : camera1));
 });
 
 $('#start_pos').change(function(event) {
 	NetworkTables.setValue('/SmartDashboard/start_pos', $(this).val());
+});
+
+$("#network-table tbody").click(function() {
+	table.rows(function(idx, data, node) {
+		console.log(data[0].includes("cooldown"));
+		return data[0].includes("cooldown");
+	}).data(["cooldown", "312098"]).draw();
 });
 
 var speed = new Chart($('#speed'), {
@@ -67,9 +74,13 @@ function onValueChanged(key, value, isNew) {
 
 	// Update the DataTable to reflect the SmartDashboard variables
 	if (isNew) {
-		table.row.add([key, value]).draw();
+		table.row.add([k_sub, value]).draw();
 	} else {
 		// Update existing row with new value
+		table.rows(function(idx, data, node) {
+			console.log(data[0]);
+			return data[0].includes(key);
+		}).data([k_sub, value]);
 	}
 
 	// Automatically set the lights of certain indicators

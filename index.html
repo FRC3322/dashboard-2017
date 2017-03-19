@@ -19,6 +19,7 @@
 			<h1 id="robot-state" class="light">Unknown</h1>
 
 			<p id="enabled" class="light auto">Enabled</p>
+			<p id="robot_speed"></p>
 			<br><br><hr>
 		</div>
 
@@ -31,14 +32,13 @@
 	<main>
 		<div id="foo">
 			<div>
-				<h1>Speed</h1>
-				<h2 id="robot_speed"></h2>
-				<canvas id="speed"></canvas>
+				<h1>Camera feed</h1>
+				<div id="camera-stream"></div>
 			</div>
 
 			<div>
-				<h1>Camera feed</h1>
-				<div id="camera-stream"></div>
+				<h1>Speed</h1>
+				<canvas id="speed"></canvas>
 			</div>
 		</div>
 
@@ -54,10 +54,10 @@
 				<p id="auton-ready" class="light">Auton ready</p>
 
 				<label>Start position<select id="start_pos">
-						<option value="0" selected disabled>Not set</option>
-						<option value="1">Left</option>
-						<option value="2">Center</option>
-						<option value="3">Right</option>
+						<option value="0" selected disabled>0 - Not set</option>
+						<option value="1">1 - Left</option>
+						<option value="2">2 - Center</option>
+						<option value="3">3 - Right</option>
 				</select></label>
 			</div>
 		</div>

@@ -238,6 +238,7 @@ main h1 {
 
 #table {
 	text-transform: uppercase;
+	max-width: 400px;
 }
 #table > div {
 	box-shadow: 4px 4px 2px rgba(50, 50, 0, 0.15);
