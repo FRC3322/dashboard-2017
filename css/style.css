@@ -185,13 +185,17 @@ main > div {
 	vertical-align: top;
 	margin: 0 10px;
 }
+main .inner-wrapper {
+	background: white;
+	box-shadow: 4px 4px 2px rgba(50, 50, 0, 0.15);
+}
 main h1 {
 	margin: 0.5em 0.2em;
 	text-transform: uppercase;
 }
 
 /* Specific styling */
-#foo {
+#left-panel {
 	width: 30em;
 }
 #camera-stream {
@@ -202,7 +206,6 @@ main h1 {
 	background: #222;
 	background-position: center;
 	background-size: cover;
-	box-shadow: 4px 4px 2px rgba(50, 50, 0, 0.15);
 }
 #properties {
 	text-align: left;
@@ -218,10 +221,6 @@ main h1 {
 	margin-right: 1em;
 	padding: 2em;
 	padding-top: .5em;
-	background: #eee;
-}
-#properties > div {
-	box-shadow: 4px 4px 2px rgba(50, 50, 0, 0.15);
 }
 #properties .light,
 #properties label {
@@ -241,7 +240,7 @@ main h1 {
 	max-width: 400px;
 }
 #table > div {
-	box-shadow: 4px 4px 2px rgba(50, 50, 0, 0.15);
+	padding: 10px;
 }
 
 #overlay {

@@ -18,7 +18,7 @@
 			<h2>Status</h2>
 			<h1 id="robot-state" class="light">Unknown</h1>
 
-			<p id="enabled" class="light auto">Enabled</p>
+			<p id="enabled" class="light">Enabled</p>
 			<p id="robot_speed"></p>
 			<br><br><hr>
 		</div>
@@ -30,7 +30,7 @@
 	</div>
 
 	<main>
-		<div id="foo">
+		<div id="left-panel">
 			<div>
 				<h1>Camera feed</h1>
 				<div id="camera-stream"></div>
@@ -38,22 +38,22 @@
 
 			<div>
 				<h1>Speed</h1>
-				<canvas id="speed"></canvas>
+				<canvas id="speed" class="inner-wrapper"></canvas>
 			</div>
 		</div>
 
 		<div id="properties">
 			<h1>Properties</h1>
-			<div>
+			<div class="inner-wrapper">
 				<h2>General</h2>
-				<p id="holder" class="light auto">Holder</p>
-				<p id="gearing" class="light">Gearing</p>
+				<p id="holder" class="light">Holder</p>
+				<p id="gearing" class="light dummy">Gearing</p>
 			</div>
-			<div>
+			<div class="inner-wrapper">
 				<h2>Auton</h2>
 				<p id="auton-ready" class="light">Auton ready</p>
 
-				<label>Start position<select id="start_pos">
+				<label>Start position<select name="start_pos" id="start_pos">
 						<option value="0" selected disabled>0 - Not set</option>
 						<option value="1">1 - Left</option>
 						<option value="2">2 - Center</option>
@@ -64,7 +64,7 @@
 
 		<div id="table">
 			<h1>Table</h1>
-			<table id="network-table" class="display"></table>
+			<table id="network-table" class="display inner-wrapper"></table>
 		</div>
 	</main>
 
